@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,12 +24,17 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Instructions } from './android/components/Instructions';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): JSX.Element {
+const Stack = createNativeStackNavigator();
+
+function Section({ children, title }: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -54,7 +59,11 @@ function Section({children, title}: SectionProps): JSX.Element {
     </View>
   );
 }
-
+const Hello = (props: { navigation: any; }) => (
+  <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+    <Text style={{ color: "black" }}>Hello</Text>
+  </View>);
+  
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -63,36 +72,27 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      {/* <StatusBar
+    // <SafeAreaView style={{ ...backgroundStyle, flex: 1 }}>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       /> */}
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Text style={{fontSize:50}}>Bordões da Kássia</Text >
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Tá né, vai que é doença!">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="Eu que sou ou você que é!?">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Sai macho!">
-            <DebugInstructions />
-          </Section>
-          <Section title="Ta bão! Brabão!">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        {/* <ScrollView */}
+        {/* contentInsetAdjustmentBehavior="automatic"
+        style={{...backgroundStyle, flex:1 }}> */}
+        <Stack.Screen name="instructions" component={Instructions} />
+        <Stack.Screen
+          name='hello'
+          component={Hello}
+        />
+
+
+      </Stack.Navigator>
+      {/* </ScrollView> */}
+      {/* </SafeAreaView > */}
+    </NavigationContainer >
   );
 }
 
