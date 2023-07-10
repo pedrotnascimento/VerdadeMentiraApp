@@ -9,7 +9,7 @@ export function Instructions(props: { navigation: any; }) {
     // const [contentIndex, setContentIndex] = useState(0); // using useState
     const [state, dispatch] = useReducer(instructionReducer, 0);
     if (state == -1) {
-        navigation.navigate("hello");
+        navigation.navigate("Verdade Ou Mentira");
         // Alert("Over");
     }
 

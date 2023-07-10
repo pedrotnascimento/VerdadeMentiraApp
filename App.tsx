@@ -27,6 +27,7 @@ import {
 import { Instructions } from './android/components/Instructions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Question } from './android/components/Questions';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -59,11 +60,7 @@ function Section({ children, title }: SectionProps): JSX.Element {
     </View>
   );
 }
-const Hello = (props: { navigation: any; }) => (
-  <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <Text style={{ color: "black" }}>Hello</Text>
-  </View>);
-  
+
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -82,10 +79,10 @@ function App(): JSX.Element {
         {/* <ScrollView */}
         {/* contentInsetAdjustmentBehavior="automatic"
         style={{...backgroundStyle, flex:1 }}> */}
-        <Stack.Screen name="instructions" component={Instructions} />
+        <Stack.Screen name="Instruções" component={Instructions} />
         <Stack.Screen
-          name='hello'
-          component={Hello}
+          name='Verdade Ou Mentira'
+          component={Question}
         />
 
 

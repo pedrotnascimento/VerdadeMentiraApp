@@ -1,28 +1,34 @@
 import { Text } from "react-native";
 
 export function InstructionContent(props: {
-     state: number; dispatch: any;
+    state: number; dispatch: any;
 }) {
     const { state, dispatch } = props;
-    const firstSlide = <>
-        <Text>“Saber ganhar dinheiro é melhor do que saber fazer algo bem”</Text>
-        <Text></Text>
-        <Text>“Quem espera sempre alcança.”</Text>
-        <Text></Text>
-        <Text>“Mentir às vezes é necessário.”</Text>
-        <Text></Text>
-        <Text>Crenças que todos já ouviram e muitos questionaram.
-            O que pensa as pessoas ao seu redor?
-            Puxe um card e deixe a discussão fluir
-            SEM JULGAMENTOS.</Text>
-    </>;
+    const firstSlide =
+        <Text numberOfLines={22}
+            adjustsFontSizeToFit
+            style={{ textAlign: 'center', fontSize: 25 }}>{`“Saber ganhar dinheiro é melhor do que saber fazer algo bem”
+“Quem espera sempre alcança.”
+
+“Mentir às vezes é necessário.”
+
+Crenças que todos já ouviram e muitos questionaram.
+
+O que pensa as pessoas ao seu redor?
+
+Puxe um card e deixe a discussão fluir
+
+SEM JULGAMENTOS.`}</Text>
+        ;
     const secondSlide = <>
-        <Text>Se todos chegaram a um consenso pressione VERDADE ou MENTIRA</Text>
-        <Text></Text>
-        <Text>Se não há consenso pressione COMPLEXO
-        </Text>
-        <Text></Text>
-        <Text>Ao final é mostrado um resumo das respostas.</Text>
+        <Text
+            numberOfLines={22}
+            adjustsFontSizeToFit
+            style={{ textAlign: 'center', fontSize: 30 }}>{`Se todos chegaram a um consenso pressione VERDADE ou MENTIRA
+     
+Se não há consenso pressione COMPLEXO
+
+Ao final é mostrado um resumo das respostas.`}</Text>
 
     </>;
 
