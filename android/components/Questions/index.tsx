@@ -23,9 +23,9 @@ export function Question(props: { navigation: any; }) {
         }
         break;
     }
-    const handleGameOver = ()=>{
+    const handleGameOver = () => {
         setSelectedCards([]);
-    }
+    };
 
     if (setOfQuestionsSelected.size >= questions.length) {
         console.log("game over");
@@ -75,13 +75,28 @@ export function Question(props: { navigation: any; }) {
             height: "70%",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "gray",
-            borderRadius: 50,
+            backgroundColor: "#F5EEED",
+            borderRadius: 1,
         }}
         >
-            <Text numberOfLines={4}
-                adjustsFontSizeToFit
-                style={{ textAlign: 'center', fontSize: 30 }}> {questions[corrente]} </Text>
+            <View style={{
+                borderTopEndRadius: 50,borderTopStartRadius: 50,
+                backgroundColor: "#095986", height: "15%", width: "100%"
+            }}></View>
+            <View style={
+                {
+                    height: "70%",
+                    justifyContent: "center",
+
+                }
+            }>
+                <Text numberOfLines={4}
+                    adjustsFontSizeToFit
+                    style={{ textAlign: 'center', fontSize: 30,color: "black" }}> {questions[corrente]} </Text>
+            </View>
+            <View style={{ 
+                borderBottomEndRadius: 50,borderBottomStartRadius: 50,
+                backgroundColor: "#970D4F", height: "15%", width: "100%" }}></View>
         </View>
         <View
             style={{

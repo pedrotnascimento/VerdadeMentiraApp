@@ -1,19 +1,28 @@
 import { Alert, Button, Text, View } from "react-native";
 import { InstructionCard } from "./InstructionCard";
 import { InstructionContent } from "./InstructionContent";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { instructionReducer } from "./instructionReducer";
 
 export function Instructions(props: { navigation: any; }) {
     const { navigation } = props;
     // const [contentIndex, setContentIndex] = useState(0); // using useState
-    const [state, dispatch] = useReducer(instructionReducer, 0);
-    if (state == -1) {
-        navigation.navigate("Verdade Ou Mentira");
-        // Alert("Over");
-    }
+    const [state, dispatch] = useReducer(instructionReducer, { index: 0, reset: false });
+    console.log(state);
+    // if (state.reset && state.index> 0) {
+    //     navigation.navigate("Verdade Ou Mentira");
+    //     dispatch({type: "start"})
+        
+    // }
 
-    return <View style={
+    useEffect(()=>{
+        if(state.reset){
+            dispatch({type: "start"})
+            navigation.navigate("Verdade Ou Mentira");
+        }
+    },[state.reset])
+    
+    return !state.reset && <View style={
         {
             flex: 1,
             justifyContent: "space-evenly",
@@ -21,12 +30,12 @@ export function Instructions(props: { navigation: any; }) {
         }
     }>
         <InstructionCard>
-            <InstructionContent state={state} dispatch={dispatch} />
+            <InstructionContent state={state.index} dispatch={dispatch} />
         </InstructionCard>
         <View style={{
             justifyContent: "center",
             width: "80%",
-            height: "10%"
+            height: "10%",
         }}>
             <Button
 

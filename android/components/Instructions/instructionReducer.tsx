@@ -1,10 +1,12 @@
 export const instructionReducer = (state: any, action: any) => {
-    console.log("hi")
+
     switch (action.type) {
         case "procceed":
-            return state + 1;
+            return { index: state.index + 1, reset: false };
         case "finish":
-            return -1;
+            return { index: 0, reset: true };
+        case "start":
+            return { index: 0, reset: false };
         default:
             return state;
     }

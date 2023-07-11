@@ -8,6 +8,7 @@ export function InstructionContent(props: {
         <Text numberOfLines={22}
             adjustsFontSizeToFit
             style={{ textAlign: 'center', fontSize: 25 }}>{`“Saber ganhar dinheiro é melhor do que saber fazer algo bem”
+
 “Quem espera sempre alcança.”
 
 “Mentir às vezes é necessário.”
